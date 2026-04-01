@@ -2,14 +2,12 @@
 
 ## 1. Overview
 
-### English
 This repository contains the backend security module for the MarketStall Inventory Management System.  
 It provides authentication, role-based access control (RBAC), stall ownership validation, and audit logging for business APIs such as inventory, transfer, promotions, notifications, and messaging.
 
 
 ## 2. Scope 
 
-### English
 This module is responsible for:
 - JWT-based authentication
 - Password hashing with bcrypt
@@ -50,40 +48,40 @@ tests/
 ## 4. Module Mapping
 
 ### [app/core/constants.py](/C:/Users/1/Desktop/backend/app/core/constants.py)
-English: Defines shared role names and audit event keys used across services, routers, and tests.  。
+Defines shared role names and audit event keys used across services, routers, and tests.  。
 
 ### [app/core/exceptions.py](/C:/Users/1/Desktop/backend/app/core/exceptions.py)
-English: Defines security-specific exception types for authentication, authorization, and ownership errors.  
+Defines security-specific exception types for authentication, authorization, and ownership errors.  
 
 ### [app/core/security.py](/C:/Users/1/Desktop/backend/app/core/security.py)
-English: Implements bcrypt hashing and JWT creation/validation. This is the foundation of authentication.  
+Implements bcrypt hashing and JWT creation/validation. This is the foundation of authentication.  
 
 ### [app/dependencies/auth.py](/C:/Users/1/Desktop/backend/app/dependencies/auth.py)
-English: Extracts the current user from the bearer token and normalizes it into a reusable user context.  
+Extracts the current user from the bearer token and normalizes it into a reusable user context.  
 
 ### [app/dependencies/permissions.py](/C:/Users/1/Desktop/backend/app/dependencies/permissions.py)
-English: Exposes dependency helpers for admin, manager/admin, stall-owner, and ownership validation use cases.  
+Exposes dependency helpers for admin, manager/admin, stall-owner, and ownership validation use cases.  
 
 ### [app/models/audit_log.py](/C:/Users/1/Desktop/backend/app/models/audit_log.py)
-English: Defines the audit log entity shape before full ORM/database integration.  
+Defines the audit log entity shape before full ORM/database integration.  
 
 ### [app/schemas/auth.py](/C:/Users/1/Desktop/backend/app/schemas/auth.py)
-English: Defines request/response validation models for login and current-user responses.  
+Defines request/response validation models for login and current-user responses.  
 
 ### [app/schemas/audit_log.py](/C:/Users/1/Desktop/backend/app/schemas/audit_log.py)
-English: Defines request/response schemas for audit log data exchange.  
+Defines request/response schemas for audit log data exchange.  
 
 ### [app/services/auth_service.py](/C:/Users/1/Desktop/backend/app/services/auth_service.py)
-English: Handles user lookup, credential verification, token issuance, and user response mapping.  
+Handles user lookup, credential verification, token issuance, and user response mapping.  
 
 ### [app/services/permission_service.py](/C:/Users/1/Desktop/backend/app/services/permission_service.py)
-English: Implements RBAC and stall ownership checks.  
+Implements RBAC and stall ownership checks.  
 
 ### [app/services/audit_service.py](/C:/Users/1/Desktop/backend/app/services/audit_service.py)
-English: Records security-related audit events in a thread-safe in-memory store.  
+Records security-related audit events in a thread-safe in-memory store.  
 
 ### [app/routers/auth.py](/C:/Users/1/Desktop/backend/app/routers/auth.py)
-English: Exposes authentication and security demo endpoints such as login, current-user lookup, role-gated routes, and ownership checks.  
+Exposes authentication and security demo endpoints such as login, current-user lookup, role-gated routes, and ownership checks.  
 
 ## 5. API Contract
 
@@ -122,7 +120,6 @@ Authorization: Bearer <token>
 
 ## 7. Permission Rules 
 
-### English
 - `customer`: authenticated only, no privileged access
 - `stall_owner`: can access own stall resources
 - `manager`: can access manager-level routes and bypass stall ownership checks by default
@@ -194,7 +191,6 @@ Run a single file ：
 
 ## 13. Security Notes 
 
-### English
 - Passwords are hashed with bcrypt and never returned in responses.
 - JWT tokens include `user_id`, `role`, and `stall_id`.
 - Invalid credentials return `401`.
